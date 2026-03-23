@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineShop - TMDB</title>
+    <meta name="theme-color" content="#0d0d12">
+    <meta name="description" content="Shop for your favorite movies using the TMDB API.">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <h1>Cine<span>Shop</span></h1>
+        </div>
+        <nav>
+            <button id="cart-btn" class="cart-btn" aria-label="Open Shopping Cart">
+                🛒 Cart (<span id="cart-count">0</span>)
+            </button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Discover Your Next Favorite Movie</h2>
+                <p>Buy premium quality movies straight from TMDB.</p>
+                <button class="cta-btn" onclick="document.getElementById('movies-grid').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <h3 class="section-title">Trending Movies</h3>
+            <div id="movies-grid" class="movies-grid">
+                <!-- Movie cards dynamically generated -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Shopping Cart Overlay -->
+    <div id="cart-overlay" class="cart-overlay">
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button id="close-cart" class="close-btn" aria-label="Close Shopping Cart">&times;</button>
+            </div>
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items generated here -->
+            </div>
+            <div class="cart-footer">
+                <div class="total">Total: $<span id="cart-total">0.00</span></div>
+                <button id="checkout-btn" class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').then((registration) => {
+                    console.log('SW registered with scope: ', registration.scope);
+                }).catch((registrationError) => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

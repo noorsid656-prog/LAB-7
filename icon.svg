@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0d0d12"/>
+  <circle cx="256" cy="256" r="150" fill="#7b2cbf"/>
+  <text x="256" y="276" font-size="80" font-family="sans-serif" font-weight="bold" fill="#fff" text-anchor="middle">TMDB</text>
+</svg>
